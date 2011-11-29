@@ -42,14 +42,33 @@ $mesh = new bolt\Node(array(
 
 `$hook` must be a string
 
-`$data` must be an array
-
 ````php
 $mesh->emit('eventName', array(
   'key' => 'value',
   'php' => array(
     'arraySyntax' => 'sucks'
   )
+));
+````
+
+# tricks
+
+You can change the emission channel after you construct the Node.
+
+````php
+<?php
+require('bolt.php');
+
+$mesh = new bolt\Node();
+
+$mesh->emit('PHP', array(
+  'lol' => 'wut'
+));
+
+$mesh->channel = 'bolt::alternate';
+
+$mesh->emit('PHP', array(
+  'alternate' => 'channel'
 ));
 ````
 
