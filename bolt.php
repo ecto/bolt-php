@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * bolt-php
  * <cam@onswipe.com>
  */
@@ -10,18 +10,36 @@ require 'lib/redisent.php';
 
 class Node {
 
+  /*
+   * Holds Redis client
+   */
   private $_client;
 
+  /*
+   * Redis host
+   */
   public $host = 'localhost';
 
+  /*
+   * Redis port
+   */
   public $port = '6379';
 
+  /*
+   * Redis password
+   */
   public $auth;
 
+  /*
+   * Bolt channel for emissions
+   */
   public $channel = 'bolt::main';
 
+  /*
+   * Allow multiple Nodes with different configurations
+   * Process options, connect to Redis
+   */
   public function __construct ($options = array()) {
-    // process options
     $accept = array('host', 'port', 'auth', 'channel');
     foreach ($options as $key => $value) {
       if (in_array($option, $accept)) {
@@ -29,13 +47,11 @@ class Node {
       }
     }
 
-    // fire up client
     $this->_client = new \redisent\Redis(
       $this->host,
       $this->port
     );
 
-    // authenticate
     if ($this->auth) {
       $this->_client->auth(
         $this->auth
@@ -43,6 +59,9 @@ class Node {
     }
   }
 
+  /*
+   * Emit an event on the config-specified channel
+   */
   public function emit ($hook, $data) {
     $m = array(
       'hook' => $hook,
