@@ -19,6 +19,8 @@ $mesh->emit('PHP', array(
 
 # methods
 
+Because PHP runtime is syncronous, bolt\Node deconstructs at the end of the script. Because of this, emission listeners are not implementable - only emissions themselves.
+
 ##$mesh = new bolt\Node($options);
 
 `options` is an array that may contain the following:
@@ -35,6 +37,7 @@ $mesh = new bolt\Node(array(
 ##$mesh->emit($hook, $data);
 
 `$hook` must be a string
+
 `$data` must be an array
 
 ````php
