@@ -2,7 +2,7 @@
 
 bolt emissions via PHP
 
-![hugemistake](http://mlkshk.com/r/6CH9)
+![hugemistake](http://i.imgur.com/89zHS.gif)
 
 # usage
 
@@ -14,6 +14,35 @@ $mesh = new bolt\Node();
 
 $mesh->emit('PHP', array(
   'lol' => 'wut'
+));
+````
+
+# methods
+
+##$mesh = new bolt\Node($options);
+
+`options` is an array that may contain the following:
+
+````php
+$mesh = new bolt\Node(array(
+  'host' => 'localhost',
+  'port' => '6379',
+  'auth' => 'redisPassword',
+  'channel' => 'bolt::main'
+));
+````
+
+##$mesh->emit($hook, $data);
+
+`$hook` must be a string
+`$data` must be an array
+
+````php
+$mesh->emit('eventName', array(
+  'key' => 'value',
+  'php' => array(
+    'arraySyntax' => 'sucks'
+  )
 ));
 ````
 
