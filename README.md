@@ -4,6 +4,10 @@ bolt emissions via PHP
 
 ![hugemistake](http://i.imgur.com/89zHS.gif)
 
+# install
+
+    git clone git://github.com/ecto/bolt-php.git
+
 # usage
 
 ````php
